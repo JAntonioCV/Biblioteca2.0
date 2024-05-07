@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CapaDeDatos.CRUD
 {
-    internal class CategoriaCD
+    public class CategoriaCD
     {
         //Cadena de Conexion
         private ConexionCD Conexion = new ConexionCD();
@@ -28,8 +28,9 @@ namespace CapaDeDatos.CRUD
                 Comando.CommandText = "SELECT * FROM Categorias";
                 Comando.CommandType = CommandType.Text;
                 LectorDatos = Comando.ExecuteReader();
-                Conexion.CerrarConexion();
                 Tabla.Load(LectorDatos);
+                Conexion.CerrarConexion();
+                
             }
             catch (Exception ex)
             {
@@ -39,8 +40,10 @@ namespace CapaDeDatos.CRUD
             return Tabla;
         }
 
-        public void Insertar(Categoria categoria)
+        //Para insertar un registro en la tabla categoria
+        public bool Insertar(Categoria categoria)
         {
+            bool agregado = false;
             try
             {
                 Comando.Connection = Conexion.AbrirConexion();
@@ -48,15 +51,64 @@ namespace CapaDeDatos.CRUD
                 Comando.CommandType = CommandType.Text;
                 Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
                 Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-                Comando.ExecuteNonQuery();
+
+                agregado = Comando.ExecuteNonQuery() > 0;
                 Comando.Parameters.Clear();
                 Conexion.CerrarConexion();
+                return agregado;
             }
 
             catch (Exception ex)
             {
-
                 string msj = ex.ToString();
+                return false;
+            }
+        }
+
+        //Para editar un registro en la tabla categoria
+        public bool Editar(Categoria categoria)
+        {
+            bool editado = false;
+            try
+            {
+                Comando.Connection = Conexion.AbrirConexion();
+                Comando.CommandText = "UPDATE Categorias SET Codigo = @codigo, Descripcion = @descripcion WHERE Id = @Id";
+                Comando.CommandType = CommandType.Text;
+                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
+                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+                Comando.Parameters.AddWithValue("@Id", categoria.Id);
+                editado = Comando.ExecuteNonQuery() > 0;
+                Comando.Parameters.Clear();
+                Conexion.CerrarConexion();
+
+                return editado;
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.ToString();
+                return false;
+            }
+        }
+
+        //Para eliminar un registro en la tabla categoria
+        public bool Eliminar(int categoriaId) 
+        {
+            bool eliminado = false;
+            try
+            {
+                Comando.Connection = Conexion.AbrirConexion();
+                Comando.CommandText = "DELETE FROM Categorias WHERE Id = @Id";
+                Comando.Parameters.AddWithValue("@Id", categoriaId);
+                eliminado = Comando.ExecuteNonQuery() > 0;
+                Comando.Parameters.Clear();
+                Conexion.CerrarConexion();
+
+                return eliminado;
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.ToString();
+                return false;
             }
         }
 
