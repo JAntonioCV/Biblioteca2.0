@@ -55,8 +55,6 @@ namespace CapaDePresentacion.Catalogos
                 if (editar == false)
                 {
                     categoria = new Categoria(0, TxtCodigo.Text, TxtDescripcion.Text);
-                    //categoria.Codigo = TxtCodigo.Text;
-                    //categoria.Descripcion = TxtDescripcion.Text;
 
                     if (categoriaCN.Insertar(categoria))
                     {
@@ -65,6 +63,7 @@ namespace CapaDePresentacion.Catalogos
                     }
                     else
                         MessageBox.Show("El registro no se inserto correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else //Es uno existente
                 {
@@ -79,12 +78,12 @@ namespace CapaDePresentacion.Catalogos
                     else
                         MessageBox.Show("El registro no se edito correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                } 
+                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo insertar o editar los datos por " + ex);
+                MessageBox.Show("No se pudo insertar o editar los datos por " + ex.Message);
             }
         }
 
@@ -101,5 +100,7 @@ namespace CapaDePresentacion.Catalogos
             else
                 MessageBox.Show("Debe seleccionar una fila de la lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+
     }
 }
