@@ -54,7 +54,10 @@ namespace CapaDePresentacion.Catalogos
                 //Si es nuevo
                 if (editar == false)
                 {
+                    
                     categoria = new Categoria(0, TxtCodigo.Text, TxtDescripcion.Text);
+
+                    categoriaCN.ValidarAntesDeCrear(categoria);
 
                     if (categoriaCN.Insertar(categoria))
                     {
@@ -70,6 +73,8 @@ namespace CapaDePresentacion.Catalogos
                     editar = false;
                     categoria = new Categoria(categoriaid, TxtCodigo.Text, TxtDescripcion.Text);
 
+
+
                     if (categoriaCN.Editar(categoria))
                     {
                         LimpiarDatos();
@@ -83,7 +88,7 @@ namespace CapaDePresentacion.Catalogos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo insertar o editar los datos por " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

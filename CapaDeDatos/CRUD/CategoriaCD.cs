@@ -112,6 +112,31 @@ namespace CapaDeDatos.CRUD
             }
         }
 
+        //Verificar si existe una tabla con el codigo y la descripcion
+        public bool VerificarRegistros(Categoria categoria) 
+        {
+            bool existe = false;
+
+            try
+            {
+                Comando.Connection = Conexion.AbrirConexion();
+                Comando.CommandText = "SELECT COUNT(*) FROM Categorias WHERE Codigo = @Codigo AND Descripcion = @descripcion";
+                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
+                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+                existe = (int) Comando.ExecuteScalar() > 0;
+                Comando.Parameters.Clear();
+                Conexion.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.Message;
+            }
+
+            return existe;
+        }
+
+
+
 
 
     }
