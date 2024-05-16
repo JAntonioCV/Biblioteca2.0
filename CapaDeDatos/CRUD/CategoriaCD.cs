@@ -69,8 +69,7 @@ namespace CapaDeDatos.CRUD
         public bool Editar(Categoria categoria)
         {
             bool editado = false;
-            try
-            {
+
                 Comando.Connection = Conexion.AbrirConexion();
                 Comando.CommandText = "UPDATE Categorias SET Codigo = @codigo, Descripcion = @descripcion WHERE Id = @Id";
                 Comando.CommandType = CommandType.Text;
@@ -82,12 +81,6 @@ namespace CapaDeDatos.CRUD
                 Conexion.CerrarConexion();
 
                 return editado;
-            }
-            catch (Exception ex)
-            {
-                string msj = ex.ToString();
-                return false;
-            }
         }
 
         //Para eliminar un registro en la tabla categoria
@@ -112,8 +105,8 @@ namespace CapaDeDatos.CRUD
             }
         }
 
-        //Verificar si existe una tabla con el codigo y la descripcion
-        public bool VerificarRegistros(Categoria categoria) 
+        //Verificar si existe un registro con el codigo y la descripcion
+        public bool ExisteCategoria(Categoria categoria) 
         {
             bool existe = false;
 
@@ -123,6 +116,7 @@ namespace CapaDeDatos.CRUD
                 Comando.CommandText = "SELECT COUNT(*) FROM Categorias WHERE Codigo = @Codigo AND Descripcion = @descripcion";
                 Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
                 Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+                
                 existe = (int) Comando.ExecuteScalar() > 0;
                 Comando.Parameters.Clear();
                 Conexion.CerrarConexion();
@@ -131,6 +125,44 @@ namespace CapaDeDatos.CRUD
             {
                 string msj = ex.Message;
             }
+
+            return existe;
+        }
+
+        //Verificar si existe otro registro con el codigo y la descripcion pero con distinto Id
+        public bool ExisteOtraCategoria(Categoria categoria) 
+        {
+            bool existe = false;
+
+            try
+            {
+                Comando.Connection = Conexion.AbrirConexion();
+                Comando.CommandText = "SELECT COUNT(*) FROM Categorias where Codigo = @Codigo AND Descripcion = @descripcion AND Id != @Id";
+                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
+                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+                Comando.Parameters.AddWithValue("@Id", categoria.Id);
+                existe = (int)Comando.ExecuteScalar() > 0;
+                Comando.Parameters.Clear();
+                Conexion.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                string msj = ex.Message;
+            }
+
+            return existe;
+        }
+
+        public bool CategoriaConLibros(int categoriaId)
+        {
+            bool existe = false;
+
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "SELECT COUNT(*) FROM Libros where CategoriaId = @categoriaId";
+            Comando.Parameters.AddWithValue("@categoriaId", categoriaId);
+            existe = (int)Comando.ExecuteScalar() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
             return existe;
         }
