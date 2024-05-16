@@ -75,9 +75,10 @@ namespace CapaDeNegocio
                 throw new Exception("Ya existe otro registro con el codigo y la descripcion proporcionada");
         }
 
-        private void ValidarAntesDeEliminar(Categoria categoria)
+        public void ValidarAntesDeEliminar(int categoriaId)
         {
-            if(categoriaCD.)
+            if (categoriaCD.CategoriaConLibros(categoriaId))
+                throw new Exception("La cateogria a eliminar contiene libros relacionados");
         }
 
 

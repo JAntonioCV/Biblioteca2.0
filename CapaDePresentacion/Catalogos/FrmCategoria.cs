@@ -122,7 +122,7 @@ namespace CapaDePresentacion.Catalogos
                 {
                     categoriaid = int.Parse(DgvCategorias.CurrentRow.Cells["Id"].Value.ToString());
 
-
+                    categoriaCN.ValidarAntesDeEliminar(categoriaid);
 
                     if (categoriaCN.Eliminar(categoriaid))
                     {

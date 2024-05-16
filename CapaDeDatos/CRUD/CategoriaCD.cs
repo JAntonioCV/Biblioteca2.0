@@ -153,6 +153,7 @@ namespace CapaDeDatos.CRUD
             return existe;
         }
 
+        //Verificar si existe un libro relacionado con la categoria que queremos eliminar
         public bool CategoriaConLibros(int categoriaId)
         {
             bool existe = false;
