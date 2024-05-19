@@ -28,5 +28,12 @@ namespace CapaDePresentacion
             frm.ShowDialog();
             frm.Dispose();
         }
+
+        private void libroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Catalogos.FrmLibro();
+            frm.ShowDialog();
+            frm.Dispose();
+        }
     }
 }
