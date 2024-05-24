@@ -22,7 +22,7 @@ namespace CapaDeDatos.CRUD
         public DataTable Obtener()
         {
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "SELECT * FROM Libros";
+            Comando.CommandText = "select L.*, C.Descripcion as Categoria from Libros L INNER JOIN Categorias C on L.CategoriaId = C.Id";
             Comando.CommandType = CommandType.Text;
             LectorDatos = Comando.ExecuteReader();
             Tabla.Load(LectorDatos);

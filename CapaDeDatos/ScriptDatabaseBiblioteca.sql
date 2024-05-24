@@ -21,3 +21,15 @@ CREATE TABLE Libros (
 
 	ALTER TABLE [Libros] ADD CONSTRAINT [FK_Libros_Categorias_CategoriaId] FOREIGN KEY([CategoriaId])
     REFERENCES  [Categorias] ([Id]);
+
+CREATE TABLE Copias (
+    [Id] [INT] IDENTITY(1,1) NOT NULL,
+    NumeroCopia VARCHAR(3) NOT NULL,
+    Prestada BIT DEFAULT 0,
+	[LibroId] [INT] NOT NULL,
+	CONSTRAINT [PK_Copias] PRIMARY KEY (Id)
+);
+	ALTER TABLE [Copias] ADD CONSTRAINT [FK_Copias_Libros_LibroId] FOREIGN KEY([LibroId])
+    REFERENCES  [Libros] ([Id]);
+
+

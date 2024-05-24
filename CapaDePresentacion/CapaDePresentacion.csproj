@@ -52,6 +52,12 @@
     <Compile Include="Catalogos\FrmCategoria.Designer.cs">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\FrmCopia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\FrmCopia.Designer.cs">
+      <DependentUpon>FrmCopia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\FrmLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Catalogos\FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\FrmCopia.resx">
+      <DependentUpon>FrmCopia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\FrmLibro.resx">
       <DependentUpon>FrmLibro.cs</DependentUpon>
@@ -102,9 +111,9 @@
       <Project>{f7d9c0b5-d166-494c-ae49-906c85df8044}</Project>
       <Name>CapaDeNegocio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
+    <ProjectReference Include="..\Entidades\CapaEntidades.csproj">
       <Project>{8AAE22B7-93C7-460F-AC12-61F5C9D4818A}</Project>
-      <Name>Entidades</Name>
+      <Name>CapaEntidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

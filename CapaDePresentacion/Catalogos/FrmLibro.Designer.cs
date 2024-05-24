@@ -211,7 +211,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmLibro";
-            this.Text = "FrmLibro";
+            this.Text = "Formulario Libro";
             this.Load += new System.EventHandler(this.FrmLibro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvLibros)).EndInit();
             this.ResumeLayout(false);

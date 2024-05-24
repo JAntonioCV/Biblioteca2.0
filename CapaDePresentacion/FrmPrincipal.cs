@@ -35,5 +35,12 @@ namespace CapaDePresentacion
             frm.ShowDialog();
             frm.Dispose();
         }
+
+        private void copiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Catalogos.FrmCopia();
+            frm.ShowDialog();
+            frm.Dispose();
+        }
     }
 }

@@ -32,9 +32,10 @@
             this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.libroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.libroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@
             // 
             this.categoriaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoriaToolStripMenuItem1,
-            this.libroToolStripMenuItem});
+            this.libroToolStripMenuItem,
+            this.copiaToolStripMenuItem});
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
             this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.categoriaToolStripMenuItem.Text = "Catalogo";
@@ -71,8 +73,15 @@
             // 
             this.categoriaToolStripMenuItem1.Name = "categoriaToolStripMenuItem1";
             this.categoriaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.categoriaToolStripMenuItem1.Text = "Categoria";
+            this.categoriaToolStripMenuItem1.Text = "Categorias";
             this.categoriaToolStripMenuItem1.Click += new System.EventHandler(this.categoriaToolStripMenuItem1_Click);
+            // 
+            // libroToolStripMenuItem
+            // 
+            this.libroToolStripMenuItem.Name = "libroToolStripMenuItem";
+            this.libroToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.libroToolStripMenuItem.Text = "Libros";
+            this.libroToolStripMenuItem.Click += new System.EventHandler(this.libroToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
@@ -86,12 +95,12 @@
             this.informesToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.informesToolStripMenuItem.Text = "Informes";
             // 
-            // libroToolStripMenuItem
+            // copiaToolStripMenuItem
             // 
-            this.libroToolStripMenuItem.Name = "libroToolStripMenuItem";
-            this.libroToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.libroToolStripMenuItem.Text = "Libro";
-            this.libroToolStripMenuItem.Click += new System.EventHandler(this.libroToolStripMenuItem_Click);
+            this.copiaToolStripMenuItem.Name = "copiaToolStripMenuItem";
+            this.copiaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.copiaToolStripMenuItem.Text = "Copias de Libro";
+            this.copiaToolStripMenuItem.Click += new System.EventHandler(this.copiaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -119,6 +128,7 @@
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem libroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copiaToolStripMenuItem;
     }
 }
 

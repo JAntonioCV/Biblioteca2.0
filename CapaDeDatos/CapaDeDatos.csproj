@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="ConexionCD.cs" />
     <Compile Include="CRUD\CategoriaCD.cs" />
+    <Compile Include="CRUD\CopiaCD.cs" />
     <Compile Include="CRUD\LibroCD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
+    <ProjectReference Include="..\Entidades\CapaEntidades.csproj">
       <Project>{8aae22b7-93c7-460f-ac12-61f5c9d4818a}</Project>
-      <Name>Entidades</Name>
+      <Name>CapaEntidades</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "CapaDeDatos\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeNegocio", "CapaDeNegocio\CapaDeNegocio.csproj", "{F7D9C0B5-D166-494C-AE49-906C85DF8044}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{8AAE22B7-93C7-460F-AC12-61F5C9D4818A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidades", "Entidades\CapaEntidades.csproj", "{8AAE22B7-93C7-460F-AC12-61F5C9D4818A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDePresentacion", "CapaDePresentacion\CapaDePresentacion.csproj", "{41F4E393-A770-495B-B507-FBC12CA66D5E}"
 EndProject
