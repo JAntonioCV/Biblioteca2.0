@@ -22,20 +22,12 @@ namespace CapaDeDatos.CRUD
         //Obtenemos todos los registros de la tabla Categorias
         public DataTable ObtenerCategorias()
         {
-            try
-            {
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "SELECT * FROM Categorias";
-                Comando.CommandType = CommandType.Text;
-                LectorDatos = Comando.ExecuteReader();
-                Tabla.Load(LectorDatos);
-                Conexion.CerrarConexion();
-                
-            }
-            catch (Exception ex)
-            {
-                string excepcion = ex.Message;
-            }
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ObtenerCategorias";
+            Comando.CommandType = CommandType.StoredProcedure;
+            LectorDatos = Comando.ExecuteReader();
+            Tabla.Load(LectorDatos);
+            Conexion.CerrarConexion();
 
             return Tabla;
         }
@@ -44,111 +36,81 @@ namespace CapaDeDatos.CRUD
         public bool Insertar(Categoria categoria)
         {
             bool agregado = false;
-            try
-            {
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "INSERT INTO Categorias (Codigo, Descripcion) VALUES (@codigo,@descripcion)";
-                Comando.CommandType = CommandType.Text;
-                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "InsertarCategoria";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Codigo", categoria.Codigo);
+            Comando.Parameters.AddWithValue("@Descripcion", categoria.Descripcion);
+            agregado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+            return agregado;
 
-                agregado = Comando.ExecuteNonQuery() > 0;
-                Comando.Parameters.Clear();
-                Conexion.CerrarConexion();
-                return agregado;
-            }
-
-            catch (Exception ex)
-            {
-                string msj = ex.ToString();
-                return false;
-            }
         }
+
 
         //Para editar un registro en la tabla categoria
         public bool Editar(Categoria categoria)
         {
             bool editado = false;
 
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "UPDATE Categorias SET Codigo = @codigo, Descripcion = @descripcion WHERE Id = @Id";
-                Comando.CommandType = CommandType.Text;
-                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-                Comando.Parameters.AddWithValue("@Id", categoria.Id);
-                editado = Comando.ExecuteNonQuery() > 0;
-                Comando.Parameters.Clear();
-                Conexion.CerrarConexion();
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ActualizarCategoria";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Id", categoria.Id);
+            Comando.Parameters.AddWithValue("@Codigo", categoria.Codigo);
+            Comando.Parameters.AddWithValue("@Descripcion", categoria.Descripcion);
+            editado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
-                return editado;
+            return editado;
         }
 
         //Para eliminar un registro en la tabla categoria
-        public bool Eliminar(int categoriaId) 
+        public bool Eliminar(int categoriaId)
         {
             bool eliminado = false;
-            try
-            {
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "DELETE FROM Categorias WHERE Id = @Id";
-                Comando.Parameters.AddWithValue("@Id", categoriaId);
-                eliminado = Comando.ExecuteNonQuery() > 0;
-                Comando.Parameters.Clear();
-                Conexion.CerrarConexion();
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "EliminarCategoria";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Id", categoriaId);
+            eliminado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
-                return eliminado;
-            }
-            catch (Exception ex)
-            {
-                string msj = ex.ToString();
-                return false;
-            }
+            return eliminado;
         }
 
         //Verificar si existe un registro con el codigo y la descripcion
-        public bool ExisteCategoria(Categoria categoria) 
+        public bool ExisteCategoria(Categoria categoria)
         {
             bool existe = false;
-
-            try
-            {
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "SELECT COUNT(*) FROM Categorias WHERE Codigo = @Codigo AND Descripcion = @descripcion";
-                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-                
-                existe = (int) Comando.ExecuteScalar() > 0;
-                Comando.Parameters.Clear();
-                Conexion.CerrarConexion();
-            }
-            catch (Exception ex)
-            {
-                string msj = ex.Message;
-            }
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ExisteCategoria";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Codigo", categoria.Codigo);
+            Comando.Parameters.AddWithValue("@Descripcion", categoria.Descripcion);
+            existe = (int) Comando.ExecuteScalar() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
             return existe;
         }
 
         //Verificar si existe otro registro con el codigo y la descripcion pero con distinto Id
-        public bool ExisteOtraCategoria(Categoria categoria) 
+        public bool ExisteOtraCategoria(Categoria categoria)
         {
             bool existe = false;
-
-            try
-            {
-                Comando.Connection = Conexion.AbrirConexion();
-                Comando.CommandText = "SELECT COUNT(*) FROM Categorias where Codigo = @Codigo AND Descripcion = @descripcion AND Id != @Id";
-                Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-                Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-                Comando.Parameters.AddWithValue("@Id", categoria.Id);
-                existe = (int)Comando.ExecuteScalar() > 0;
-                Comando.Parameters.Clear();
-                Conexion.CerrarConexion();
-            }
-            catch (Exception ex)
-            {
-                string msj = ex.Message;
-            }
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ExisteOtraCategoria";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
+            Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+            Comando.Parameters.AddWithValue("@Id", categoria.Id);
+            existe = (int) Comando.ExecuteScalar() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
             return existe;
         }
@@ -157,11 +119,11 @@ namespace CapaDeDatos.CRUD
         public bool CategoriaConLibros(int categoriaId)
         {
             bool existe = false;
-
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "SELECT COUNT(*) FROM Libros where CategoriaId = @categoriaId";
-            Comando.Parameters.AddWithValue("@categoriaId", categoriaId);
-            existe = (int)Comando.ExecuteScalar() > 0;
+            Comando.CommandText = "CategoriaConLibros";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
+            existe = (int) Comando.ExecuteScalar() > 0;
             Comando.Parameters.Clear();
             Conexion.CerrarConexion();
 

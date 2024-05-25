@@ -34,9 +34,17 @@ namespace CapaDePresentacion.Catalogos
         //Obtener las categorias desde la Capa de Negocio y la vamos a enviar al DGV
         private void MostrarCategorias()
         {
-            categoriaCN = new CategoriaCN();
-            DgvCategorias.DataSource = categoriaCN.ObtenerCategorias();
-            DgvCategorias.Columns["Id"].Visible = false;
+            try
+            {
+                categoriaCN = new CategoriaCN();
+                DgvCategorias.DataSource = categoriaCN.ObtenerCategorias();
+                DgvCategorias.Columns["Id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         //Limpiar los controles de texto
