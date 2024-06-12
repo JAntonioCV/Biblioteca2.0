@@ -42,5 +42,12 @@ namespace CapaDePresentacion
             frm.ShowDialog();
             frm.Dispose();
         }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Reportes.FrmRptCategoria();
+            frm.ShowDialog();
+            frm.Dispose();
+        }
     }
 }

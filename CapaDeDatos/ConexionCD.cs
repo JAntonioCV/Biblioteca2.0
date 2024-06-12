@@ -13,8 +13,8 @@ namespace CapaDeDatos
         //Puede funcionar con .
         //Puede Funcionar con el nombre de la maquina DESKTOP-3RIGAIB\SQLEXPRESS
         //Cadena de conexion
-        private SqlConnection Conexion = new SqlConnection("Data Source=.;Database=Biblioteca;Integrated Security=True");
-        //private SqlConnection Conexion = new SqlConnection("Data Source=DESKTOP-3RIGAIB\\SQLEXPRESS;Database=Biblioteca;Integrated Security=True");
+        //private SqlConnection Conexion = new SqlConnection("Data Source=.;Database=Biblioteca;Integrated Security=True");
+        private SqlConnection Conexion = new SqlConnection("Data Source=DESKTOP-3RIGAIB\\SQLEXPRESS;Database=Biblioteca;Integrated Security=True");
 
         //Metodo para abrir la conexion
         public SqlConnection AbrirConexion()

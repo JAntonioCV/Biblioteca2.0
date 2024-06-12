@@ -12,8 +12,10 @@ CREATE PROCEDURE InsertarCategoria
     @Descripcion VARCHAR(100)
 )
 AS
+BEGIN
     INSERT INTO Categorias (Codigo, Descripcion)
-    VALUES (@Codigo, @Descripcion);
+    VALUES (@Codigo, @Descripcion)
+END
 --
 CREATE PROCEDURE ActualizarCategoria
 (
@@ -22,6 +24,7 @@ CREATE PROCEDURE ActualizarCategoria
     @Descripcion VARCHAR(100)
 )
 AS
+BEGIN
     UPDATE Categorias
     SET Codigo = @Codigo, Descripcion = @Descripcion
     WHERE Id = @Id;
