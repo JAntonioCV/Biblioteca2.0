@@ -20,7 +20,7 @@ namespace CapaDeDatos.CRUD
         SqlCommand Comando = new SqlCommand();
 
         //Obtenemos todos los registros de la tabla Categorias
-        public DataTable ObtenerCategorias()
+        public DataTable Obtener()
         {
             Comando.Connection = Conexion.AbrirConexion();
             Comando.CommandText = "ObtenerCategorias";

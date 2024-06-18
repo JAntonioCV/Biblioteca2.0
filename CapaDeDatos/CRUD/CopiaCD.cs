@@ -23,8 +23,8 @@ namespace CapaDeDatos.CRUD
         public DataTable Obtener()
         {
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "SELECT L.Titulo ,C.NumeroCopia FROM Copias C INNER JOIN Libros L on C.LibroId = L.Id";
-            Comando.CommandType = CommandType.Text;
+            Comando.CommandText = "ObtenerCopias";
+            Comando.CommandType = CommandType.StoredProcedure;
             LectorDatos = Comando.ExecuteReader();
             Tabla.Load(LectorDatos);
             Conexion.CerrarConexion();
@@ -36,11 +36,11 @@ namespace CapaDeDatos.CRUD
         {
             bool agregado = false;
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "INSERT INTO Copias (NumeroCopia, Prestada, LibroId) VALUES (@numeroCopia, @prestada, @libroId)";
-            Comando.CommandType = CommandType.Text;
-            Comando.Parameters.AddWithValue("@numeroCopia", copia.NumeroCopia);
-            Comando.Parameters.AddWithValue("@prestada", copia.Prestada);
-            Comando.Parameters.AddWithValue("@libroId", copia.LibroId);
+            Comando.CommandText = "InsertarCopia";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@NumeroCopia", copia.NumeroCopia);
+            Comando.Parameters.AddWithValue("@Prestada", copia.EsPrestada);
+            Comando.Parameters.AddWithValue("@LibroId", copia.LibroId);
             agregado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
             Conexion.CerrarConexion();
@@ -49,25 +49,45 @@ namespace CapaDeDatos.CRUD
         }
 
         //Para editar un registro en la tabla copia
-        //public bool Editar(Copia copia)
-        //{
-        //    bool editado = false;
+        public bool Editar(Copia copia)
+        {
+            bool editado = false;
 
-        //    Comando.Connection = Conexion.AbrirConexion();
-        //    Comando.CommandText = "UPDATE Libros SET Codigo = @codigo, Titulo = @titulo, ISBN = @isbn, Autor = @autor, CategoriaId = @categoriaId WHERE Id = @Id";
-        //    Comando.CommandType = CommandType.Text;
-        //    Comando.Parameters.AddWithValue("@codigo", libro.Codigo);
-        //    Comando.Parameters.AddWithValue("@titulo", libro.Titulo);
-        //    Comando.Parameters.AddWithValue("@isbn", libro.ISBN);
-        //    Comando.Parameters.AddWithValue("@autor", libro.Autor);
-        //    Comando.Parameters.AddWithValue("@categoriaId", libro.CategoriaId);
-        //    Comando.Parameters.AddWithValue("@Id", libro.Id);
-        //    editado = Comando.ExecuteNonQuery() > 0;
-        //    Comando.Parameters.Clear();
-        //    Conexion.CerrarConexion();
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ActualizarCopia";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@NumeroCopia", copia.NumeroCopia);
+            Comando.Parameters.AddWithValue("@Prestada", copia.EsPrestada);
+            Comando.Parameters.AddWithValue("@LibroId", copia.LibroId);
+            editado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
 
-        //    return editado;
-        //}
+            return editado;
+        }
+
+        //Para eliminar un registro en la tabla copia
+        public bool Eliminar(int copiaId)
+        {
+            bool eliminado = false;
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "EliminarCopia";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Id", copiaId);
+            eliminado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return eliminado;
+        }
+
+        //TODO: Validaciones que se deberian de hacer pero por tiempo las omito
+
+        //Verificar si existe un registro con el numero de copia y libro
+
+        //Verificar si existe otro registro con el numero de copia y libro pero con distinto Id
+
+        //Verificar si existe un detalle de prestamo relacionada con la copia que queremos eliminar
 
 
     }

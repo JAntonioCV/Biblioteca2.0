@@ -82,7 +82,7 @@
             this.DgvCopias.AllowUserToDeleteRows = false;
             this.DgvCopias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvCopias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCopias.Location = new System.Drawing.Point(105, 243);
+            this.DgvCopias.Location = new System.Drawing.Point(105, 250);
             this.DgvCopias.Name = "DgvCopias";
             this.DgvCopias.ReadOnly = true;
             this.DgvCopias.RowHeadersWidth = 51;
@@ -93,7 +93,7 @@
             // BtnEliminar
             // 
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Location = new System.Drawing.Point(610, 193);
+            this.BtnEliminar.Location = new System.Drawing.Point(610, 200);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(86, 23);
             this.BtnEliminar.TabIndex = 31;
@@ -103,7 +103,7 @@
             // BtnEditar
             // 
             this.BtnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEditar.Location = new System.Drawing.Point(372, 193);
+            this.BtnEditar.Location = new System.Drawing.Point(372, 200);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(88, 23);
             this.BtnEditar.TabIndex = 30;
@@ -113,7 +113,7 @@
             // BtnGuardar
             // 
             this.BtnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(105, 193);
+            this.BtnGuardar.Location = new System.Drawing.Point(105, 200);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(90, 23);
             this.BtnGuardar.TabIndex = 29;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 426);
+            this.ClientSize = new System.Drawing.Size(807, 428);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CmbLibros);
             this.Controls.Add(this.TxtISBN);

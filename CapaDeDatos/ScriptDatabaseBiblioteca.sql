@@ -28,8 +28,10 @@ CREATE TABLE Copias (
     Prestada BIT DEFAULT 0,
 	[LibroId] [INT] NOT NULL,
 	CONSTRAINT [PK_Copias] PRIMARY KEY (Id)
-);
+)
 	ALTER TABLE [Copias] ADD CONSTRAINT [FK_Copias_Libros_LibroId] FOREIGN KEY([LibroId])
     REFERENCES  [Libros] ([Id]);
+
+
 
 

@@ -22,8 +22,8 @@ namespace CapaDeDatos.CRUD
         public DataTable Obtener()
         {
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "select L.*, C.Descripcion as Categoria from Libros L INNER JOIN Categorias C on L.CategoriaId = C.Id";
-            Comando.CommandType = CommandType.Text;
+            Comando.CommandText = "ObtenerLibros";
+            Comando.CommandType = CommandType.StoredProcedure;
             LectorDatos = Comando.ExecuteReader();
             Tabla.Load(LectorDatos);
             Conexion.CerrarConexion();
@@ -35,13 +35,13 @@ namespace CapaDeDatos.CRUD
         {
             bool agregado = false;
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "INSERT INTO Libros (Codigo, Titulo, ISBN, Autor, CategoriaId) VALUES (@codigo, @titulo, @isbn, @autor, @categoriaId)";
-            Comando.CommandType = CommandType.Text;
-            Comando.Parameters.AddWithValue("@codigo", libro.Codigo);
-            Comando.Parameters.AddWithValue("@titulo", libro.Titulo);
-            Comando.Parameters.AddWithValue("@isbn", libro.ISBN);
-            Comando.Parameters.AddWithValue("@autor", libro.Autor);
-            Comando.Parameters.AddWithValue("@categoriaId", libro.CategoriaId);
+            Comando.CommandText = "InsertarLibro";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Codigo", libro.Codigo);
+            Comando.Parameters.AddWithValue("@Titulo", libro.Titulo);
+            Comando.Parameters.AddWithValue("@ISBN", libro.ISBN);
+            Comando.Parameters.AddWithValue("@Autor", libro.Autor);
+            Comando.Parameters.AddWithValue("@CategoriaId", libro.CategoriaId);
             agregado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
             Conexion.CerrarConexion();
@@ -55,13 +55,13 @@ namespace CapaDeDatos.CRUD
             bool editado = false;
 
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "UPDATE Libros SET Codigo = @codigo, Titulo = @titulo, ISBN = @isbn, Autor = @autor, CategoriaId = @categoriaId WHERE Id = @Id";
-            Comando.CommandType = CommandType.Text;
-            Comando.Parameters.AddWithValue("@codigo", libro.Codigo);
-            Comando.Parameters.AddWithValue("@titulo", libro.Titulo);
-            Comando.Parameters.AddWithValue("@isbn", libro.ISBN);
-            Comando.Parameters.AddWithValue("@autor", libro.Autor);
-            Comando.Parameters.AddWithValue("@categoriaId", libro.CategoriaId);
+            Comando.CommandText = "ActualizarLibro";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Codigo", libro.Codigo);
+            Comando.Parameters.AddWithValue("@Titulo", libro.Titulo);
+            Comando.Parameters.AddWithValue("@ISBN", libro.ISBN);
+            Comando.Parameters.AddWithValue("@Autor", libro.Autor);
+            Comando.Parameters.AddWithValue("@CategoriaId", libro.CategoriaId);
             Comando.Parameters.AddWithValue("@Id", libro.Id);
             editado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
@@ -75,7 +75,8 @@ namespace CapaDeDatos.CRUD
         {
             bool eliminado = false;
             Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "DELETE FROM Libros WHERE Id = @Id";
+            Comando.CommandText = "EliminarLibro";
+            Comando.CommandType = CommandType.StoredProcedure;
             Comando.Parameters.AddWithValue("@Id", categoriaId);
             eliminado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
@@ -85,70 +86,12 @@ namespace CapaDeDatos.CRUD
 
         }
 
-        //Se esta Trabajando XD
+        //TODO: Validaciones que se deberian de hacer pero por tiempo las omito
 
-        ////Verificar si existe un registro con el codigo y la descripcion
-        //public bool ExisteLibro(Categoria categoria)
-        //{
-        //    bool existe = false;
+        //Verificar si existe un registro con el codigo, titulo e ISBN 
 
-        //    try
-        //    {
-        //        Comando.Connection = Conexion.AbrirConexion();
-        //        Comando.CommandText = "SELECT COUNT(*) FROM Categorias WHERE Codigo = @Codigo AND Descripcion = @descripcion";
-        //        Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-        //        Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
+        //Verificar si existe otro registro con el codigo, titulo e ISBN pero con distinto Id
 
-        //        existe = (int)Comando.ExecuteScalar() > 0;
-        //        Comando.Parameters.Clear();
-        //        Conexion.CerrarConexion();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string msj = ex.Message;
-        //    }
-
-        //    return existe;
-        //}
-
-        ////Verificar si existe otro registro con el codigo y la descripcion pero con distinto Id
-        //public bool ExisteOtroLibro(Categoria categoria)
-        //{
-        //    bool existe = false;
-
-        //    try
-        //    {
-        //        Comando.Connection = Conexion.AbrirConexion();
-        //        Comando.CommandText = "SELECT COUNT(*) FROM Categorias where Codigo = @Codigo AND Descripcion = @descripcion AND Id != @Id";
-        //        Comando.Parameters.AddWithValue("@codigo", categoria.Codigo);
-        //        Comando.Parameters.AddWithValue("@descripcion", categoria.Descripcion);
-        //        Comando.Parameters.AddWithValue("@Id", categoria.Id);
-        //        existe = (int)Comando.ExecuteScalar() > 0;
-        //        Comando.Parameters.Clear();
-        //        Conexion.CerrarConexion();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string msj = ex.Message;
-        //    }
-
-        //    return existe;
-        //}
-
-        ////Verificar si existe un libro relacionado con la categoria que queremos eliminar
-        //public bool CategoriaConLibros(int categoriaId)
-        //{
-        //    bool existe = false;
-
-        //    Comando.Connection = Conexion.AbrirConexion();
-        //    Comando.CommandText = "SELECT COUNT(*) FROM Libros where CategoriaId = @categoriaId";
-        //    Comando.Parameters.AddWithValue("@categoriaId", categoriaId);
-        //    existe = (int)Comando.ExecuteScalar() > 0;
-        //    Comando.Parameters.Clear();
-        //    Conexion.CerrarConexion();
-
-        //    return existe;
-        //}
-
+        //Verificar si existe una copia relacionada con el libro que queremos eliminar
     }
 }

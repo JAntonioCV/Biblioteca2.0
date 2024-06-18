@@ -10,7 +10,7 @@ namespace Entidades
     {
         public int Id { get; set; }
         public string NumeroCopia { get; set; }
-        public bool Prestada { get; set; }
+        public bool EsPrestada { get; set; }
         public int LibroId { get; set; }
 
         public Copia()
@@ -18,11 +18,11 @@ namespace Entidades
 
         }
 
-        public Copia(int id, string numeroCopia, bool prestada, int libroId)
+        public Copia(int id, string numeroCopia, bool esPrestada, int libroId)
         {
             Id =id;
             NumeroCopia = numeroCopia;
-            Prestada = prestada;
+            EsPrestada = esPrestada;
             LibroId = libroId;
         }
     }

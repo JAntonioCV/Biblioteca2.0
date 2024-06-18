@@ -17,7 +17,7 @@ namespace CapaDeNegocio
         public DataTable ObtenerCategorias() 
         {
             DataTable Tabla  = new DataTable();
-            Tabla = categoriaCD.ObtenerCategorias();
+            Tabla = categoriaCD.Obtener();
             return Tabla;
         }
 
