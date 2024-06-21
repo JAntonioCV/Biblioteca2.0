@@ -196,6 +196,7 @@ BEGIN
 END
 
 GO
+
 --CLIENTE
 
 --CREATE PROCEDURE ObtenerCategorias
@@ -203,6 +204,17 @@ GO
 --BEGIN
 --    SELECT * FROM Categorias;
 --END
+
+--Prestamo
+
+CREATE PROCEDURE ObtenerPrestamos
+AS
+BEGIN
+    SELECT p.*, c.Nombres + ' ' + c.Apellidos AS Cliente
+    FROM Prestamos p
+    INNER JOIN Clientes c ON p.ClienteId = c.Id;
+END
+
 
 
 
