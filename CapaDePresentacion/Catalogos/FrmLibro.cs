@@ -84,6 +84,11 @@ namespace CapaDePresentacion.Catalogos
                 //Si es nuevo
                 if (editar == false)
                 {
+                    if (CmbCategoria.SelectedIndex == -1) 
+                    {
+                        MessageBox.Show("Debe seleccionar una categoria de la lista disponible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     libro = new Libro(0, TxtCodigo.Text, TxtTitulo.Text,TxtISBN.Text,TxtAutor.Text,(int)CmbCategoria.SelectedValue);
 

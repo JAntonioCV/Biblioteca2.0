@@ -39,7 +39,7 @@ namespace CapaDeDatos.CRUD
             Comando.CommandText = "InsertarCopia";
             Comando.CommandType = CommandType.StoredProcedure;
             Comando.Parameters.AddWithValue("@NumeroCopia", copia.NumeroCopia);
-            Comando.Parameters.AddWithValue("@Prestada", copia.EsPrestada);
+            Comando.Parameters.AddWithValue("@EsPrestada", copia.EsPrestada);
             Comando.Parameters.AddWithValue("@LibroId", copia.LibroId);
             agregado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
@@ -57,8 +57,9 @@ namespace CapaDeDatos.CRUD
             Comando.CommandText = "ActualizarCopia";
             Comando.CommandType = CommandType.StoredProcedure;
             Comando.Parameters.AddWithValue("@NumeroCopia", copia.NumeroCopia);
-            Comando.Parameters.AddWithValue("@Prestada", copia.EsPrestada);
+            Comando.Parameters.AddWithValue("@EsPrestada", copia.EsPrestada);
             Comando.Parameters.AddWithValue("@LibroId", copia.LibroId);
+            Comando.Parameters.AddWithValue("@Id", copia.Id);
             editado = Comando.ExecuteNonQuery() > 0;
             Comando.Parameters.Clear();
             Conexion.CerrarConexion();

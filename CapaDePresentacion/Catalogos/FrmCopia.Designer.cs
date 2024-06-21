@@ -30,7 +30,7 @@
         {
             this.label6 = new System.Windows.Forms.Label();
             this.CmbLibros = new System.Windows.Forms.ComboBox();
-            this.TxtISBN = new System.Windows.Forms.TextBox();
+            this.TxtNoCopia = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.DgvCopias = new System.Windows.Forms.DataGridView();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -59,12 +59,12 @@
             this.CmbLibros.Size = new System.Drawing.Size(501, 24);
             this.CmbLibros.TabIndex = 37;
             // 
-            // TxtISBN
+            // TxtNoCopia
             // 
-            this.TxtISBN.Location = new System.Drawing.Point(195, 85);
-            this.TxtISBN.Name = "TxtISBN";
-            this.TxtISBN.Size = new System.Drawing.Size(97, 22);
-            this.TxtISBN.TabIndex = 35;
+            this.TxtNoCopia.Location = new System.Drawing.Point(195, 85);
+            this.TxtNoCopia.Name = "TxtNoCopia";
+            this.TxtNoCopia.Size = new System.Drawing.Size(97, 22);
+            this.TxtNoCopia.TabIndex = 35;
             // 
             // label5
             // 
@@ -99,6 +99,7 @@
             this.BtnEliminar.TabIndex = 31;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnEditar
             // 
@@ -109,6 +110,7 @@
             this.BtnEditar.TabIndex = 30;
             this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = true;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnGuardar
             // 
@@ -119,6 +121,7 @@
             this.BtnGuardar.TabIndex = 29;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // label1
             // 
@@ -137,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(807, 428);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CmbLibros);
-            this.Controls.Add(this.TxtISBN);
+            this.Controls.Add(this.TxtNoCopia);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.DgvCopias);
             this.Controls.Add(this.BtnEliminar);
@@ -157,7 +160,7 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CmbLibros;
-        private System.Windows.Forms.TextBox TxtISBN;
+        private System.Windows.Forms.TextBox TxtNoCopia;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView DgvCopias;
         private System.Windows.Forms.Button BtnEliminar;

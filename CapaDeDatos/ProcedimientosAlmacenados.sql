@@ -7,6 +7,8 @@ BEGIN
     SELECT * FROM Categorias
 END
 
+GO
+
 CREATE PROCEDURE InsertarCategoria
 (
     @Codigo VARCHAR(3),
@@ -17,6 +19,8 @@ BEGIN
     INSERT INTO Categorias (Codigo, Descripcion)
     VALUES (@Codigo, @Descripcion)
 END
+
+GO
 
 CREATE PROCEDURE ActualizarCategoria
 (
@@ -31,6 +35,8 @@ BEGIN
     WHERE Id = @Id;
 END
 
+GO
+
 CREATE PROCEDURE EliminarCategoria
 (
     @Id INT
@@ -40,6 +46,8 @@ BEGIN
     DELETE FROM Categorias
     WHERE Id = @Id;
 END
+
+GO
 
 CREATE PROCEDURE ExisteCategoria
 (
@@ -51,7 +59,9 @@ BEGIN
     SELECT COUNT(*) 
     FROM Categorias 
     WHERE Codigo = @Codigo AND Descripcion = @Descripcion;
-END;
+END
+
+GO
 
 CREATE PROCEDURE ExisteOtraCategoria
 (
@@ -64,7 +74,9 @@ BEGIN
     SELECT COUNT(*) 
     FROM Categorias 
     WHERE Codigo = @Codigo AND Descripcion = @Descripcion AND Id != @Id;
-END;
+END
+
+GO
 
 CREATE PROCEDURE CategoriaConLibros
 (
@@ -75,7 +87,9 @@ BEGIN
     SELECT COUNT(*) 
     FROM Libros 
     WHERE CategoriaId = @CategoriaId;
-END;
+END
+
+GO
 
 --Libros
 
@@ -86,6 +100,8 @@ BEGIN
     FROM Libros L
     INNER JOIN Categorias C ON L.CategoriaId = C.Id
 END
+
+GO
 
 CREATE PROCEDURE InsertarLibro
     @Codigo VARCHAR(3),
@@ -98,6 +114,8 @@ BEGIN
     INSERT INTO Libros (Codigo, Titulo, ISBN, Autor, CategoriaId)
     VALUES (@Codigo, @Titulo, @ISBN, @Autor, @CategoriaId);
 END
+
+GO
 
 CREATE PROCEDURE ActualizarLibro
     @Id INT,
@@ -117,6 +135,8 @@ BEGIN
     WHERE Id = @Id;
 END
 
+GO
+
 CREATE PROCEDURE EliminarLibro
 (
     @Id INT
@@ -127,6 +147,7 @@ BEGIN
     WHERE Id = @Id;
 END
 
+GO
 
 --Copias
 
@@ -138,6 +159,8 @@ BEGIN
     INNER JOIN Libros L ON C.LibroId = L.Id;
 END
 
+GO
+
 CREATE PROCEDURE InsertarCopia
 @NumeroCopia INT,
 @EsPrestada BIT,
@@ -148,6 +171,8 @@ BEGIN
     VALUES (@NumeroCopia, @EsPrestada, @LibroId)
 END
 
+GO
+
 CREATE PROCEDURE ActualizarCopia
 @Id INT,
 @NumeroCopia INT,
@@ -156,9 +181,11 @@ CREATE PROCEDURE ActualizarCopia
 AS
 BEGIN
     UPDATE Copias
-    SET NumeroCopia = @numeroCopia, Prestada = @prestada, LibroId = @libroId
+    SET NumeroCopia = @NumeroCopia, EsPrestada = @EsPrestada, LibroId = @LibroId
     WHERE Id = @id
 END
+
+GO
 
 CREATE PROCEDURE EliminarCopia
 @Id int
@@ -168,18 +195,14 @@ BEGIN
     WHERE Id = @Id
 END
 
-
-
-
-
-
+GO
 --CLIENTE
 
-CREATE PROCEDURE ObtenerCategorias
-AS
-BEGIN
-    SELECT * FROM Categorias;
-END
+--CREATE PROCEDURE ObtenerCategorias
+--AS
+--BEGIN
+--    SELECT * FROM Categorias;
+--END
 
 
 
