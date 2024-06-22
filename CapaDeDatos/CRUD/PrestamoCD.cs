@@ -28,5 +28,7 @@ namespace CapaDeDatos.CRUD
             Conexion.CerrarConexion();
             return Tabla;
         }
+
+
     }
 }

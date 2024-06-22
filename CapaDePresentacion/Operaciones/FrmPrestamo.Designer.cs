@@ -32,7 +32,12 @@
             this.DgvPrestamos = new System.Windows.Forms.DataGridView();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnEditar = new System.Windows.Forms.Button();
-            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.CmbCiente = new System.Windows.Forms.ComboBox();
+            this.BtnFiltrar = new System.Windows.Forms.Button();
+            this.TxtCodigo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BtnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPrestamos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,9 +47,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(231, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 25);
+            this.label1.Size = new System.Drawing.Size(300, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "PRESTAMOS DE LIBROS";
+            this.label1.Text = "LISTADO DE PRESTAMOS";
             // 
             // DgvPrestamos
             // 
@@ -52,20 +57,20 @@
             this.DgvPrestamos.AllowUserToDeleteRows = false;
             this.DgvPrestamos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvPrestamos.Location = new System.Drawing.Point(103, 273);
+            this.DgvPrestamos.Location = new System.Drawing.Point(58, 210);
             this.DgvPrestamos.Name = "DgvPrestamos";
             this.DgvPrestamos.ReadOnly = true;
             this.DgvPrestamos.RowHeadersWidth = 51;
             this.DgvPrestamos.RowTemplate.Height = 24;
-            this.DgvPrestamos.Size = new System.Drawing.Size(578, 151);
+            this.DgvPrestamos.Size = new System.Drawing.Size(679, 179);
             this.DgvPrestamos.TabIndex = 12;
             // 
             // BtnEliminar
             // 
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Location = new System.Drawing.Point(606, 211);
+            this.BtnEliminar.Location = new System.Drawing.Point(640, 165);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.BtnEliminar.Size = new System.Drawing.Size(97, 23);
             this.BtnEliminar.TabIndex = 11;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
@@ -73,32 +78,83 @@
             // BtnEditar
             // 
             this.BtnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEditar.Location = new System.Drawing.Point(380, 211);
+            this.BtnEditar.Location = new System.Drawing.Point(323, 165);
             this.BtnEditar.Name = "BtnEditar";
-            this.BtnEditar.Size = new System.Drawing.Size(75, 23);
+            this.BtnEditar.Size = new System.Drawing.Size(89, 23);
             this.BtnEditar.TabIndex = 10;
             this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = true;
             // 
-            // BtnGuardar
+            // CmbCiente
             // 
-            this.BtnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardar.Location = new System.Drawing.Point(103, 211);
-            this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGuardar.TabIndex = 9;
-            this.BtnGuardar.Text = "Guardar";
-            this.BtnGuardar.UseVisualStyleBackColor = true;
+            this.CmbCiente.FormattingEnabled = true;
+            this.CmbCiente.Location = new System.Drawing.Point(323, 89);
+            this.CmbCiente.Name = "CmbCiente";
+            this.CmbCiente.Size = new System.Drawing.Size(311, 24);
+            this.CmbCiente.TabIndex = 13;
+            // 
+            // BtnFiltrar
+            // 
+            this.BtnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnFiltrar.Location = new System.Drawing.Point(640, 90);
+            this.BtnFiltrar.Name = "BtnFiltrar";
+            this.BtnFiltrar.Size = new System.Drawing.Size(97, 23);
+            this.BtnFiltrar.TabIndex = 14;
+            this.BtnFiltrar.Text = "Filtrar";
+            this.BtnFiltrar.UseVisualStyleBackColor = true;
+            // 
+            // TxtCodigo
+            // 
+            this.TxtCodigo.Location = new System.Drawing.Point(129, 87);
+            this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.Size = new System.Drawing.Size(100, 22);
+            this.TxtCodigo.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(54, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 23);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Codigo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(246, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 23);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Cliente";
+            // 
+            // BtnNuevo
+            // 
+            this.BtnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNuevo.Location = new System.Drawing.Point(58, 165);
+            this.BtnNuevo.Name = "BtnNuevo";
+            this.BtnNuevo.Size = new System.Drawing.Size(90, 23);
+            this.BtnNuevo.TabIndex = 18;
+            this.BtnNuevo.Text = "Nuevo";
+            this.BtnNuevo.UseVisualStyleBackColor = true;
+            this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
             // FrmPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnNuevo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TxtCodigo);
+            this.Controls.Add(this.BtnFiltrar);
+            this.Controls.Add(this.CmbCiente);
             this.Controls.Add(this.DgvPrestamos);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnEditar);
-            this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.label1);
             this.Name = "FrmPrestamo";
             this.Text = "FrmPrestamo";
@@ -115,6 +171,11 @@
         private System.Windows.Forms.DataGridView DgvPrestamos;
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnEditar;
-        private System.Windows.Forms.Button BtnGuardar;
+        private System.Windows.Forms.ComboBox CmbCiente;
+        private System.Windows.Forms.Button BtnFiltrar;
+        private System.Windows.Forms.TextBox TxtCodigo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnNuevo;
     }
 }

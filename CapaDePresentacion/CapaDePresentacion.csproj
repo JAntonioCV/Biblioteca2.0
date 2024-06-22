@@ -94,6 +94,12 @@
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operaciones\FrmMaestroDetallePrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operaciones\FrmMaestroDetallePrestamo.Designer.cs">
+      <DependentUpon>FrmMaestroDetallePrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operaciones\FrmPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operaciones\FrmMaestroDetallePrestamo.resx">
+      <DependentUpon>FrmMaestroDetallePrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operaciones\FrmPrestamo.resx">
       <DependentUpon>FrmPrestamo.cs</DependentUpon>

@@ -15,6 +15,7 @@ namespace CapaDePresentacion.Operaciones
     {
         //Variables
         private PrestamoCN prestamoCN;
+        private ClienteCN clienteCN = new ClienteCN();
 
         public FrmPrestamo()
         {
@@ -41,6 +42,13 @@ namespace CapaDePresentacion.Operaciones
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void BtnNuevo_Click(object sender, EventArgs e)
+        {
+            var frm = new Operaciones.FrmMaestroDetallePrestamo();
+            frm.ShowDialog();
+            frm.Dispose();
         }
     }
 }

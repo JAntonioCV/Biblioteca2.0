@@ -63,5 +63,10 @@ namespace CapaDePresentacion
             frm.ShowDialog();
             frm.Dispose();
         }
+
+        private void devolucionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
