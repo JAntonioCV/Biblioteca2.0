@@ -199,11 +199,51 @@ GO
 
 --CLIENTE
 
---CREATE PROCEDURE ObtenerCategorias
---AS
---BEGIN
---    SELECT * FROM Categorias;
---END
+CREATE PROCEDURE ObtenerClientes
+AS
+BEGIN
+    SELECT * FROM Clientes
+END
+
+GO
+
+CREATE PROCEDURE InsertarCliente
+    @Cedula VARCHAR(14),
+    @Nombres VARCHAR(100),
+    @Apellidos VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO Clientes (Cedula, Nombres, Apellidos)
+    VALUES (@Cedula, @Nombres, @Apellidos)
+END
+
+GO
+
+CREATE PROCEDURE ActualizarCliente
+    @Id INT,
+    @Cedula VARCHAR(14),
+    @Nombres VARCHAR(100),
+    @Apellidos VARCHAR(100)
+AS
+BEGIN
+    UPDATE Clientes
+    SET Cedula = @Cedula,
+        Nombres = @Nombres,
+        Apellidos = @Apellidos
+    WHERE Id = @Id
+END
+
+GO
+
+CREATE PROCEDURE EliminarCliente
+    @Id INT
+AS
+BEGIN
+    DELETE FROM Clientes
+    WHERE Id = @Id
+END
+
+GO
 
 --Prestamo
 

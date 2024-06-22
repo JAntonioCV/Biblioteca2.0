@@ -52,9 +52,9 @@ namespace CapaDePresentacion
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //var frm = new Reportes.FrmRptCategoria();
-            //frm.ShowDialog();
-            //frm.Dispose();
+            var frm = new Catalogos.FrmClientes();
+            frm.ShowDialog();
+            frm.Dispose();
         }
 
         private void prestamosToolStripMenuItem_Click(object sender, EventArgs e)

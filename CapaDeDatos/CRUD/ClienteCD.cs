@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace CapaDeDatos.CRUD
 {
@@ -30,6 +31,60 @@ namespace CapaDeDatos.CRUD
 
             return Tabla;
         }
+
+
+        //Para insertar un registro en la tabla cliente
+        public bool Insertar(Cliente cliente)
+        {
+            bool agregado = false;
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "InsertarCliente";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Cedula", cliente.Cedula);
+            Comando.Parameters.AddWithValue("@Nombres", cliente.Nombres);
+            Comando.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
+            agregado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return agregado;
+        }
+
+        //Para editar un registro en la tabla cliente
+        public bool Editar(Cliente cliente)
+        {
+            bool editado = false;
+
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ActualizarCliente";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Cedula", cliente.Cedula);
+            Comando.Parameters.AddWithValue("@Nombres", cliente.Nombres);
+            Comando.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
+            Comando.Parameters.AddWithValue("@Id", cliente.Id);
+            editado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return editado;
+        }
+
+        //Para eliminar un registro en la tabla cliente
+        public bool Eliminar(int clienteId)
+        {
+            bool eliminado = false;
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "EliminarCliente";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Id", clienteId);
+            eliminado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return eliminado;
+        }
+
+
 
 
     }
