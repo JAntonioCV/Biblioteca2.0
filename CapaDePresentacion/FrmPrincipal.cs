@@ -68,5 +68,12 @@ namespace CapaDePresentacion
         {
 
         }
+
+        private void librosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Reportes.FrmRptLibro();
+            frm.ShowDialog();
+            frm.Dispose();
+        }
     }
 }

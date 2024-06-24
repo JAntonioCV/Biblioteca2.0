@@ -114,6 +114,12 @@
     <Compile Include="Reportes\FrmRptCategoria.Designer.cs">
       <DependentUpon>FrmRptCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\FrmRptLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\FrmRptLibro.Designer.cs">
+      <DependentUpon>FrmRptLibro.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Catalogos\FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +135,7 @@
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Informes\RptLibro.rdlc" />
     <EmbeddedResource Include="Operaciones\FrmMaestroDetallePrestamo.resx">
       <DependentUpon>FrmMaestroDetallePrestamo.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,8 +155,13 @@
     <EmbeddedResource Include="Reportes\FrmRptCategoria.resx">
       <DependentUpon>FrmRptCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FrmRptLibro.resx">
+      <DependentUpon>FrmRptLibro.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Entidades.Categoria.datasource" />
+    <None Include="Properties\DataSources\Entidades.Copia.datasource" />
+    <None Include="Properties\DataSources\Entidades.Libro.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
