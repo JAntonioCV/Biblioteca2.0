@@ -255,6 +255,22 @@ BEGIN
     INNER JOIN Clientes c ON p.ClienteId = c.Id;
 END
 
+GO
+
+CREATE PROCEDURE ObtenerPrestamosFiltrados
+    @Codigo VARCHAR(3) = NULL,
+	@ClienteId INT = NULL
+AS
+BEGIN
+
+	SELECT p.*, c.Nombres + ' ' + c.Apellidos AS Cliente
+	FROM Prestamos p
+	INNER JOIN Clientes c ON p.ClienteId = c.Id
+	WHERE (@ClienteId IS NULL OR P.ClienteId = @ClienteId)
+	AND (@Codigo IS NULL OR P.Codigo = @Codigo)
+END
+GO
+
 
 
 
