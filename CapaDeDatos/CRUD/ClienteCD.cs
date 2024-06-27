@@ -32,6 +32,31 @@ namespace CapaDeDatos.CRUD
             return Tabla;
         }
 
+        public List<Cliente> ObtenerClientes() 
+        {
+            List<Cliente> clientes = new List<Cliente>();
+
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ObtenerClientes";
+            Comando.CommandType = CommandType.StoredProcedure;
+
+            LectorDatos = Comando.ExecuteReader();
+
+            while (LectorDatos.Read())
+            {
+                clientes.Add(new Cliente
+                {
+                    Id = (int) LectorDatos["Id"],
+                    Cedula = (string) LectorDatos["Cedula"],
+                    Nombres = (string) LectorDatos["Nombres"],
+                    Apellidos = (string)LectorDatos["Apellidos"]
+                });
+            }
+
+            return clientes;
+        }
+           
+
 
         //Para insertar un registro en la tabla cliente
         public bool Insertar(Cliente cliente)

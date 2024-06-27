@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace CapaDeDatos.CRUD
 {
@@ -22,6 +23,20 @@ namespace CapaDeDatos.CRUD
         {
             Comando.Connection = Conexion.AbrirConexion();
             Comando.CommandText = "ObtenerPrestamos";
+            Comando.CommandType = CommandType.StoredProcedure;
+            LectorDatos = Comando.ExecuteReader();
+            Tabla.Load(LectorDatos);
+            Conexion.CerrarConexion();
+            return Tabla;
+        }
+
+        //Obtenemos todos los registros de la tabla Prestamo Filtrado 
+        public DataTable Obtener(string codigo, int? clienteId)
+        {
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ObtenerPrestamosFiltrados";
+            Comando.Parameters.AddWithValue("@Codigo",codigo);
+            Comando.Parameters.AddWithValue("@ClienteId", clienteId);
             Comando.CommandType = CommandType.StoredProcedure;
             LectorDatos = Comando.ExecuteReader();
             Tabla.Load(LectorDatos);

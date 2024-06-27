@@ -19,5 +19,12 @@ namespace CapaDeNegocio
             Tabla = prestamoCD.Obtener();
             return Tabla;
         }
+
+        public DataTable Obtener(string codigo, int? clienteId)
+        {
+            DataTable Tabla = new DataTable();
+            Tabla = prestamoCD.Obtener(codigo, clienteId);
+            return Tabla;
+        }
     }
 }

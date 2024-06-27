@@ -21,6 +21,11 @@ namespace CapaDeNegocio
             return Tabla;
         }
 
+        public List<Cliente> ObtenerClientes()
+        {
+            return clienteCD.ObtenerClientes();
+        }
+
         //Agregar el Cliente a la Capa de datos
         public bool Insertar(Cliente cliente)
         {

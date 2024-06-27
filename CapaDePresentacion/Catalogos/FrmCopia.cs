@@ -42,8 +42,8 @@ namespace CapaDePresentacion.Catalogos
             {
                 copiaCN = new CopiaCN();
                 DgvCopias.DataSource = copiaCN.Obtener();
-                //DgvCopias.Columns["Id"].Visible = false;
-                //DgvCopias.Columns["LibroId"].Visible = false;
+                DgvCopias.Columns["Id"].Visible = false;
+                DgvCopias.Columns["LibroId"].Visible = false;
             }
             catch (Exception ex)
             {
