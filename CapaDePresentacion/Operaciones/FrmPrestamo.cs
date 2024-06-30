@@ -16,6 +16,7 @@ namespace CapaDePresentacion.Operaciones
         //Variables
         private PrestamoCN prestamoCN;
         private ClienteCN clienteCN = new ClienteCN();
+        private int prestamoId; 
 
         public FrmPrestamo()
         {
@@ -88,7 +89,31 @@ namespace CapaDePresentacion.Operaciones
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (DgvPrestamos.SelectedRows.Count > 0)
+                {
 
+
+                    //prestamoId = int.Parse(DgvPrestamos.CurrentRow.Cells["Id"].Value.ToString());
+
+                    //categoriaCN.ValidarAntesDeEliminar(categoriaid);
+
+                    //if (categoriaCN.Eliminar(categoriaid))
+                    //{
+                    //    LimpiarDatos();
+                    //    MostrarCategorias();
+                    //}
+                    //else
+                    //    MessageBox.Show("El registro no se elimino correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Debe seleccionar una fila de la lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
@@ -97,5 +122,29 @@ namespace CapaDePresentacion.Operaciones
             TxtCodigo.Text = string.Empty;
             Mostrar();
         }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DgvPrestamos.SelectedRows.Count > 0)
+                {
+                    //editar = true;
+                    //TxtCodigo.Text = DgvCategorias.CurrentRow.Cells["Codigo"].Value.ToString();
+                    //TxtDescripcion.Text = DgvCategorias.CurrentRow.Cells["Descripcion"].Value.ToString();
+                    //categoriaid = int.Parse(DgvCategorias.CurrentRow.Cells["Id"].Value.ToString());
+
+                }
+                else
+                    MessageBox.Show("Debe seleccionar una fila de la lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
     }
 }
