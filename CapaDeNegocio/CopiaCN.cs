@@ -21,6 +21,12 @@ namespace CapaDeNegocio
             return Tabla;
         }
 
+        //Obtener las copias de un libro proporcionado
+        public DataTable Obtener(int libroId) 
+        {
+            return copiaCD.Obtener(libroId);
+        }
+
         //Agregar el Copia a la Capa de datos
         public bool Insertar(Copia copia)
         {

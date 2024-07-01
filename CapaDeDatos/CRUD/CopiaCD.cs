@@ -31,6 +31,18 @@ namespace CapaDeDatos.CRUD
             return Tabla;
         }
 
+        public DataTable Obtener(int libroId)
+        {
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "ObtenerCopiasPorLibro";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@LibroId", libroId);
+            LectorDatos = Comando.ExecuteReader();
+            Tabla.Load(LectorDatos);
+            Conexion.CerrarConexion();
+            return Tabla;
+        }
+
         //Para insertar un registro en la tabla copia
         public bool Insertar(Copia copia)
         {

@@ -161,6 +161,18 @@ END
 
 GO
 
+CREATE PROCEDURE ObtenerCopiasPorLibro
+@LibroId INT
+AS
+BEGIN
+    SELECT *
+    FROM Copias C
+    WHERE C.EsPrestada = 0 AND LibroId = LibroId
+	ORDER BY C.NumeroCopia
+END
+
+GO
+
 CREATE PROCEDURE InsertarCopia
 @NumeroCopia INT,
 @EsPrestada BIT,

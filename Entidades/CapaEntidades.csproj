@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
-    <Compile Include="ClienteExtension.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Copia.cs" />
+    <Compile Include="DetalleDePrestamo.cs" />
     <Compile Include="Libro.cs" />
+    <Compile Include="Prestamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public partial class Cliente
+    public class DetalleDePrestamo
     {
-        public string NombreCompleto
-        { get { return Nombres + " " + Apellidos; } }
+        public int Id { get; set; }
+        public int PrestamoId { get; set; }
+        public int CopiaId { get; set; }
     }
 }
