@@ -30,7 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.CmbCliente = new System.Windows.Forms.ComboBox();
             this.DgvPrestamos = new System.Windows.Forms.DataGridView();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -72,12 +72,12 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Codigo de Prestamo";
             // 
-            // textBox1
+            // TxtCodigo
             // 
-            this.textBox1.Location = new System.Drawing.Point(195, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 25;
+            this.TxtCodigo.Location = new System.Drawing.Point(195, 40);
+            this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.Size = new System.Drawing.Size(100, 22);
+            this.TxtCodigo.TabIndex = 25;
             // 
             // CmbCliente
             // 
@@ -211,7 +211,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TxtCodigo);
             this.groupBox1.Location = new System.Drawing.Point(94, 94);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(639, 245);
@@ -279,7 +279,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtCodigo;
         private System.Windows.Forms.ComboBox CmbCliente;
         private System.Windows.Forms.DataGridView DgvPrestamos;
         private System.Windows.Forms.Button BtnEliminar;

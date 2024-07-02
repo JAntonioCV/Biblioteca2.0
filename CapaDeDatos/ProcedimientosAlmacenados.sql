@@ -167,7 +167,7 @@ AS
 BEGIN
     SELECT *
     FROM Copias C
-    WHERE C.EsPrestada = 0 AND LibroId = LibroId
+    WHERE C.EsPrestada = 0 AND LibroId = @LibroId
 	ORDER BY C.NumeroCopia
 END
 
@@ -195,6 +195,18 @@ BEGIN
     UPDATE Copias
     SET NumeroCopia = @NumeroCopia, EsPrestada = @EsPrestada, LibroId = @LibroId
     WHERE Id = @id
+END
+
+GO
+
+CREATE PROCEDURE PrestarODevolverCopia
+@Id INT,
+@EsPrestada BIT
+AS
+BEGIN
+    UPDATE Copias
+    SET EsPrestada = @EsPrestada
+    WHERE Id = @Id
 END
 
 GO
@@ -282,6 +294,33 @@ BEGIN
 	AND (@Codigo IS NULL OR P.Codigo = @Codigo)
 END
 GO
+
+CREATE PROCEDURE InsertarPrestamo
+    @Id INT OUTPUT,
+    @Codigo VARCHAR(5),
+    @FechaPrestamo DATE,
+    @FechaDevolucion DATE,
+    @ClienteId INT
+AS
+BEGIN
+    INSERT INTO Prestamos (Codigo, FechaPrestamo, FechaDevolucion, ClienteId)
+    VALUES (@Codigo, @FechaPrestamo, @FechaDevolucion, @ClienteId);
+
+    SET @Id = SCOPE_IDENTITY();
+END
+
+GO
+
+CREATE PROCEDURE InsertarDetallePrestamo
+    @PrestamoId INT,
+    @CopiaId INT
+AS
+BEGIN
+    INSERT INTO DetallesPrestamo (PrestamoId, CopiaId)
+    VALUES (@PrestamoId, @CopiaId);
+END;
+
+
 
 
 

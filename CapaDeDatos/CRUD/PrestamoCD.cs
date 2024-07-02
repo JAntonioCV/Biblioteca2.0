@@ -44,6 +44,48 @@ namespace CapaDeDatos.CRUD
             return Tabla;
         }
 
+        //Para insertar un registro en la tabla libro
+        public int? Insertar(Prestamo prestamo)
+        {
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "InsertarPrestamo";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Codigo", prestamo.Codigo);
+            Comando.Parameters.AddWithValue("@FechaPrestamo", prestamo.FechaPrestamo);
+            Comando.Parameters.AddWithValue("@FechaDevolucion", prestamo.FechaDevolucion);
+            Comando.Parameters.AddWithValue("@ClienteId", prestamo.ClienteId);
+
+            SqlParameter outputIdParam = new SqlParameter("@Id", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            Comando.Parameters.Add(outputIdParam);
+
+            Comando.ExecuteNonQuery();
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return (int)outputIdParam.Value;
+        }
+
+        //Para insertar un registro en la tabla libro
+        public bool InsertarDetalle(int prestamoId, int copiaId )
+        {
+            bool agregado = false;
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "InsertarDetallePrestamo";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
+            Comando.Parameters.AddWithValue("@CopiaId", copiaId);
+
+            agregado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return agregado;
+        }
+
 
     }
 }

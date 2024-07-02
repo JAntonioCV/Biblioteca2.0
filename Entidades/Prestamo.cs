@@ -14,21 +14,21 @@ namespace Entidades
         public DateTime FechaDevolucion { get; set; }
         public int ClienteId { get; set; }
 
-        public List<DetalleDePrestamo> DetallesDePrestamo { get; set; }
+        //public List<DetalleDePrestamo> DetallesDePrestamo { get; set; }
 
         public Prestamo()
         {
-            DetallesDePrestamo = new List<DetalleDePrestamo>();
+            //DetallesDePrestamo = new List<DetalleDePrestamo>();
         }
 
-        public Prestamo(int id, string codigo, DateTime fechaPrestamo, DateTime fechaDevolucion, int clienteId, List<DetalleDePrestamo> detallesDePrestamo)
+        public Prestamo(int id, string codigo, DateTime fechaPrestamo, DateTime fechaDevolucion, int clienteId)
         {
             Id = id;
             Codigo = codigo;
             FechaPrestamo = fechaPrestamo;
             FechaDevolucion = fechaDevolucion;
             ClienteId = clienteId;
-            DetallesDePrestamo = detallesDePrestamo;
+            //DetallesDePrestamo = detallesDePrestamo;
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using CapaDeDatos.CRUD;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,5 +27,17 @@ namespace CapaDeNegocio
             Tabla = prestamoCD.Obtener(codigo, clienteId);
             return Tabla;
         }
+
+        public int? Insertar(Prestamo prestamo)
+        {
+            return prestamoCD.Insertar(prestamo);
+        }
+
+        public bool InsertarDetalle(int prestamoId, int copiaId)
+        {
+            return prestamoCD.InsertarDetalle(prestamoId,copiaId);
+        }
+
+
     }
 }

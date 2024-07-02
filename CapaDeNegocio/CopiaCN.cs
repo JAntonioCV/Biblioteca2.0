@@ -39,6 +39,11 @@ namespace CapaDeNegocio
             return copiaCD.Editar(copia);
         }
 
+        public bool PrestarODevolverCopia(int copiaId, bool esPrestada)
+        {
+            return copiaCD.PrestarODevolverCopia(copiaId, esPrestada);
+        }
+
         //Eliminar el Copia a la Capa de datos
         public bool Eliminar(int copiaId)
         {

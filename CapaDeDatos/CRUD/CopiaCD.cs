@@ -94,6 +94,23 @@ namespace CapaDeDatos.CRUD
             return eliminado;
         }
 
+        public bool PrestarODevolverCopia(int copiaId, bool esPrestada)
+        {
+            bool editado = false;
+
+            Comando.Connection = Conexion.AbrirConexion();
+            Comando.CommandText = "PrestarODevolverCopia";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@Id", copiaId);
+            Comando.Parameters.AddWithValue("@EsPrestada", esPrestada);
+            editado = Comando.ExecuteNonQuery() > 0;
+            Comando.Parameters.Clear();
+            Conexion.CerrarConexion();
+
+            return editado;
+        }
+
+
         //TODO: Validaciones que se deberian de hacer pero por tiempo las omito
 
         //Verificar si existe un registro con el numero de copia y libro

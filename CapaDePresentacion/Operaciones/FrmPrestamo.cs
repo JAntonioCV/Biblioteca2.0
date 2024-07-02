@@ -65,8 +65,14 @@ namespace CapaDePresentacion.Operaciones
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
             var frm = new Operaciones.FrmMaestroDetallePrestamo();
+            frm.FormClosed += Frm_FormClosed;
             frm.ShowDialog();
-            frm.Dispose();
+            //frm.Dispose();
+        }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Mostrar();
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
@@ -129,10 +135,14 @@ namespace CapaDePresentacion.Operaciones
             {
                 if (DgvPrestamos.SelectedRows.Count > 0)
                 {
-                    //editar = true;
-                    //TxtCodigo.Text = DgvCategorias.CurrentRow.Cells["Codigo"].Value.ToString();
-                    //TxtDescripcion.Text = DgvCategorias.CurrentRow.Cells["Descripcion"].Value.ToString();
-                    //categoriaid = int.Parse(DgvCategorias.CurrentRow.Cells["Id"].Value.ToString());
+                    prestamoId = int.Parse(DgvPrestamos.CurrentRow.Cells["Id"].Value.ToString());
+
+                    var frm = new Operaciones.FrmMaestroDetallePrestamo();
+                    frm.editar = true;
+                    frm.prestamoId = prestamoId;
+                    frm.FormClosed += Frm_FormClosed;
+                    frm.ShowDialog();
+
 
                 }
                 else
