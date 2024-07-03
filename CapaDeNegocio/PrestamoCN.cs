@@ -38,6 +38,16 @@ namespace CapaDeNegocio
             return prestamoCD.InsertarDetalle(prestamoId,copiaId);
         }
 
+        public bool Eliminar(int prestamoId)
+        {
+            return prestamoCD.Eliminar(prestamoId);
+        }
+
+        public bool EliminarDetallesPrestamo(int prestamoId)
+        {
+            return prestamoCD.EliminarDetallesPrestamo(prestamoId);
+        }
+
 
     }
 }

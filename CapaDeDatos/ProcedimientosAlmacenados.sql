@@ -320,7 +320,25 @@ BEGIN
     VALUES (@PrestamoId, @CopiaId);
 END;
 
+GO
 
+CREATE PROCEDURE EliminarPrestamo
+    @PrestamoId INT
+AS
+BEGIN
+    DELETE FROM Prestamos
+    WHERE Id = @PrestamoId;
+END
+
+GO
+
+CREATE PROCEDURE EliminarDetallesPrestamo
+    @PrestamoId INT
+AS
+BEGIN
+    DELETE FROM DetallesPrestamo
+    WHERE PrestamoId = @PrestamoId;
+END
 
 
 

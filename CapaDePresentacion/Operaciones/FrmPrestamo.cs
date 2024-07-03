@@ -16,7 +16,7 @@ namespace CapaDePresentacion.Operaciones
         //Variables
         private PrestamoCN prestamoCN;
         private ClienteCN clienteCN = new ClienteCN();
-        private int prestamoId; 
+        private int prestamoId;
 
         public FrmPrestamo()
         {
@@ -101,17 +101,24 @@ namespace CapaDePresentacion.Operaciones
                 {
 
 
-                    //prestamoId = int.Parse(DgvPrestamos.CurrentRow.Cells["Id"].Value.ToString());
+                    prestamoId = int.Parse(DgvPrestamos.CurrentRow.Cells["Id"].Value.ToString());
 
                     //categoriaCN.ValidarAntesDeEliminar(categoriaid);
 
-                    //if (categoriaCN.Eliminar(categoriaid))
-                    //{
-                    //    LimpiarDatos();
-                    //    MostrarCategorias();
-                    //}
-                    //else
-                    //    MessageBox.Show("El registro no se elimino correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (prestamoCN.EliminarDetallesPrestamo(prestamoId))
+                    {
+                        // cambiar el estado de la copia a true
+                        if (prestamoCN.Eliminar(prestamoId))
+                        {
+                            Mostrar();
+                            CargarDatos();
+                            BtnLimpiar_Click(null, null);
+                        }
+                        else
+                            MessageBox.Show("El registro de prestamo no se elimino correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                        MessageBox.Show("El registro de detalle de prestamo no se elimino correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                     MessageBox.Show("Debe seleccionar una fila de la lista", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
