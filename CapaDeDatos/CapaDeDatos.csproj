@@ -45,6 +45,7 @@
     <Compile Include="CRUD\CategoriaCD.cs" />
     <Compile Include="CRUD\ClienteCD.cs" />
     <Compile Include="CRUD\CopiaCD.cs" />
+    <Compile Include="CRUD\DetalleDePrestamoCD.cs" />
     <Compile Include="CRUD\LibroCD.cs" />
     <Compile Include="CRUD\PrestamoCD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

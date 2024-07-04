@@ -20,6 +20,7 @@ namespace CapaDePresentacion.Operaciones
         private CopiaCN copiaCN;
         private Prestamo prestamo = new Prestamo();
         private DetalleDePrestamo detalleDePrestamo;
+        private DetalleDePrestamoCN detalleDePrestamoCN = new DetalleDePrestamoCN();
         private BindingList<DetalleDePrestamo> detallesDePrestamoBindingList = new BindingList<DetalleDePrestamo>();
         public bool editar=false;
         public int prestamoId;
@@ -135,7 +136,7 @@ namespace CapaDePresentacion.Operaciones
                     {
                         foreach (var detalle in detallesDePrestamoBindingList)
                         {
-                            if (prestamoCN.InsertarDetalle(prestamoId.Value, detalle.CopiaId))
+                            if (detalleDePrestamoCN.InsertarDetallePrestamo(prestamoId.Value, detalle.CopiaId))
                                 copiaCN.PrestarODevolverCopia(detalle.CopiaId, true);
                         }
 

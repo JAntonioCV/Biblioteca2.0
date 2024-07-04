@@ -91,7 +91,7 @@ namespace CapaDeDatos.CRUD
         //}
 
 
-        //Para insertar un registro en la tabla libro
+        //Para insertar un registro en la tabla prestamo
         public int? Insertar(Prestamo prestamo)
         {
             Comando.Connection = Conexion.AbrirConexion();
@@ -150,21 +150,21 @@ namespace CapaDeDatos.CRUD
         //}
 
         //Para insertar un registro en la tabla libro
-        public bool InsertarDetalle(int prestamoId, int copiaId)
-        {
-            bool agregado = false;
-            Comando.Connection = Conexion.AbrirConexion();
-            Comando.CommandText = "InsertarDetallePrestamo";
-            Comando.CommandType = CommandType.StoredProcedure;
-            Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
-            Comando.Parameters.AddWithValue("@CopiaId", copiaId);
+        //public bool InsertarDetalle(int prestamoId, int copiaId)
+        //{
+        //    bool agregado = false;
+        //    Comando.Connection = Conexion.AbrirConexion();
+        //    Comando.CommandText = "InsertarDetallePrestamo";
+        //    Comando.CommandType = CommandType.StoredProcedure;
+        //    Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
+        //    Comando.Parameters.AddWithValue("@CopiaId", copiaId);
 
-            agregado = Comando.ExecuteNonQuery() > 0;
-            Comando.Parameters.Clear();
-            Conexion.CerrarConexion();
+        //    agregado = Comando.ExecuteNonQuery() > 0;
+        //    Comando.Parameters.Clear();
+        //    Conexion.CerrarConexion();
 
-            return agregado;
-        }
+        //    return agregado;
+        //}
 
         //public bool InsertarDetalle(int prestamoId, int copiaId)
         //{
@@ -193,6 +193,7 @@ namespace CapaDeDatos.CRUD
         {
             bool eliminado = false;
 
+            Comando.Connection = Conexion.AbrirConexion();
             Comando.CommandText = "EliminarPrestamo";
             Comando.CommandType = CommandType.StoredProcedure;
             Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
@@ -226,21 +227,21 @@ namespace CapaDeDatos.CRUD
         //}
 
         //Para eliminar un registro en la tabla prestamo
-        public bool EliminarDetallesPrestamo(int prestamoId)
-        {
-            bool eliminado = false;
+        //public bool EliminarDetallesPrestamo(int prestamoId)
+        //{
+        //    bool eliminado = false;
 
 
-            Comando.CommandType = CommandType.StoredProcedure;
-            Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
-            eliminado = Comando.ExecuteNonQuery() > 0;
-            Comando.Parameters.Clear();
-            Conexion.CerrarConexion();
+        //    Comando.CommandType = CommandType.StoredProcedure;
+        //    Comando.Parameters.AddWithValue("@PrestamoId", prestamoId);
+        //    eliminado = Comando.ExecuteNonQuery() > 0;
+        //    Comando.Parameters.Clear();
+        //    Conexion.CerrarConexion();
 
 
-            return eliminado;
+        //    return eliminado;
 
-        }
+        //}
 
         //public bool EliminarDetallesPrestamo(int prestamoId)
         //{

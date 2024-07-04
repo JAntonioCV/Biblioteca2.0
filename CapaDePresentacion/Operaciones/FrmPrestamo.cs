@@ -1,4 +1,5 @@
 ﻿using CapaDeNegocio;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace CapaDePresentacion.Operaciones
         //Variables
         private PrestamoCN prestamoCN;
         private ClienteCN clienteCN = new ClienteCN();
+        private DetalleDePrestamoCN detalleDePrestamoCN;
         private int prestamoId;
 
         public FrmPrestamo()
@@ -35,6 +37,7 @@ namespace CapaDePresentacion.Operaciones
             try
             {
                 prestamoCN = new PrestamoCN();
+                detalleDePrestamoCN = new DetalleDePrestamoCN();
                 DgvPrestamos.DataSource = prestamoCN.Obtener();
                 DgvPrestamos.Columns["Id"].Visible = false;
                 DgvPrestamos.Columns["ClienteId"].Visible = false;
@@ -103,11 +106,19 @@ namespace CapaDePresentacion.Operaciones
 
                     prestamoId = int.Parse(DgvPrestamos.CurrentRow.Cells["Id"].Value.ToString());
 
+                    List<int> copias = detalleDePrestamoCN.ObtenerCopiasPorPrestamoId(prestamoId);
+
+
+
                     //categoriaCN.ValidarAntesDeEliminar(categoriaid);
 
-                    if (prestamoCN.EliminarDetallesPrestamo(prestamoId))
+                    if (detalleDePrestamoCN.EliminarDetallePrestamo(prestamoId))
                     {
                         // cambiar el estado de la copia a true
+
+
+
+                        //Eliminar el prestamo
                         if (prestamoCN.Eliminar(prestamoId))
                         {
                             Mostrar();

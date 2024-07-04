@@ -173,6 +173,17 @@ END
 
 GO
 
+CREATE PROCEDURE ObtenerCopiasPorPrestamoId
+    @PrestamoId INT
+AS
+BEGIN
+    SELECT CopiaId
+    FROM DetallesPrestamo
+    WHERE Id = @PrestamoId;
+END
+
+GO
+
 CREATE PROCEDURE InsertarCopia
 @NumeroCopia INT,
 @EsPrestada BIT,
